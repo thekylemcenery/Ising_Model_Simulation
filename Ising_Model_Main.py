@@ -122,8 +122,6 @@ while True:
         
 init_energy = lattice_energy(lattice,boundaries,J,h)
 
-#T=1000
-#iterations = 100000
 
 '''
     ----------------------------------------------------------------------------------------------
