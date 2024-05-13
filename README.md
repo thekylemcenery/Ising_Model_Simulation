@@ -1,1 +1,1 @@
-# Ising-Model-Simulation-
+# Ising-Model-Python-
