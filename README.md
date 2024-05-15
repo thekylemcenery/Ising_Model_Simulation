@@ -10,4 +10,4 @@ This python project produces a Monte Carlo simulation for the Ising model in 1D,
 5. Contributing
 6. License
 
-## 1. Installation {#installation}
+## Installation {#installation}
