@@ -16,4 +16,9 @@ Use the package manager pip to install both the NumPy and SciPy libraries:
 pip install numpy scipy
 ```
 ## Usage
-The user will first be prompted to input the desired number of dimensions for the lattice they wish to simulate, 1 for 1D, 2 for 2D, or 3 for 3D, any other input will register as invalid and restart the prompt.
+The user will first be prompted to input the desired number of dimensions for the lattice they wish to simulate, 1 for 1D, 2 for 2D, or 3 for 3D, any other input will register as invalid and restart the prompt. The generate_lattice function is then called, prompting the user to inputthe desired number of spins along each dimension of their chosen lattice, note that any integer can be selected and the number of spins along each dimension does not have to be identical. 
+'''python
+while True:
+    dimensionality = int(input("Enter the dimensionality of the lattice (1 for 1D, 2 for 2D, 3 for 3D): "))
+    lattice = generate_lattice(dimensionality)
+'''
