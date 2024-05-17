@@ -57,7 +57,7 @@ As the algorithm works based on selecting a random spin and then summing over th
 
  1. Periodic - the lattice wraps back around to the opposite side, as if it repeats itself along said dimension.
  2. Reflective - the edge of the lattice is reflected, so the nearest neighbour effectively becomes the selected spin itself.
- 3. Open - the lattice is assumed to be surrounded by no interacting spins, so the nearest neighbour contribution at the edge is taken as zero.
+ 3. Open - the lattice is assumed to be surrounded by no interacting spins, so the nearest neighbour contribution at the boundary is taken to be zero.
 
 ```python
 while True: 
