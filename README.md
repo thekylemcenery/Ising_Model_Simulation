@@ -35,8 +35,22 @@ However, note that there are a minimum number of spins that must be input based 
     elif dimensionality == 3 and (lattice.shape[0] < 3 or lattice.shape[1] < 3 or lattice.shape[2] < 3):
         print("Error: 3D lattice must have at least dimensions of 3x3x3.")
         continue  # Restart the loop to prompt for dimensionality again
-   
+```
+Provided all the prior inputs are valid, the program will produce a plot for the lattice, at random, 75% of the spins in the lattice will be allocated as +1 and 25% as -1, as the initial lattice must be in a ferromagnetic state before the algorithm is applied.
+
+```python
+ if dimensionality == 1: 
+        visualize_1d_lattice(lattice)
+        n_x = lattice.shape[0]  # Assign the size of the lattice along the first dimension to n_x
+        V = n_x
+    elif dimensionality == 2:
+        visualize_2d_lattice(lattice)
+        n_x, n_y = lattice.shape  # Assign the size of the lattice along the first and second dimensions to n_x and n_y
+        V = n_x * n_y
+    elif dimensionality == 3:
+        visualize_3d_lattice(lattice)
+        n_x, n_y, n_z = lattice.shape  # Assign the size of the lattice along the three dimensions to          n_x, n_y, and n_z
+        V = n_x * n_y * n_z
 
 ```
-
 
