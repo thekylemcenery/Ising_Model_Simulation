@@ -15,3 +15,4 @@ Use the package manager pip to install both the NumPy and SciPy libraries:
 ```bash
 pip install numpy scipy
 ```
+## Usage
