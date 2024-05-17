@@ -49,8 +49,62 @@ Provided all the prior inputs are valid, the program will produce a plot for the
         V = n_x * n_y
     elif dimensionality == 3:
         visualize_3d_lattice(lattice)
-        n_x, n_y, n_z = lattice.shape  # Assign the size of the lattice along the three dimensions to          n_x, n_y, and n_z
+        n_x, n_y, n_z = lattice.shape  # Assign the size of the lattice along the three dimensions to n_x, n_y, and n_z
         V = n_x * n_y * n_z
-
 ```
+
+As the algorithm works based on selecting a random spin and then summing over the spin values of its nearest neighbours, the user must select a boundary condition for when a spin at the edge of the lattice is selected. The program offers the user 3 options:
+
+ 1. Periodic - the lattice wraps back around to the opposite side, as if it repeats itself along said dimension.
+ 2. Reflective - the edge of the lattice is reflected, so the nearest neighbour effectively becomes the selected spin itself.
+ 3. Open - the lattice is assumed to be surrounded by no interacting spins, so the nearest neighbour contribution at the edge is taken as zero.
+
+```python
+while True: 
+    boundary = input("Enter desired boundary condition: \n a. Periodic \n b. Reflective \n c. Open \n ").strip().lower()
+    if boundary in ["a", "a.", "periodic"]:
+        print("You have selected 'Periodic' boundary conditions.")
+        boundaries = 'wrap'
+        break
+    elif boundary in ["b", "b.", "reflective"]:
+        print("You have selected 'Reflective' boundary conditions.")
+        boundaries =  'reflect'
+        break
+    elif boundary in ["c", "c.", "open"]:
+        print("You have selected 'Open' boundary conditions.")
+        boundaries = 'constant'
+        break
+    else:
+        print("Invalid boundary conditions. Please choose again.")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
