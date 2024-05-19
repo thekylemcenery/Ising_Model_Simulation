@@ -104,9 +104,7 @@ while True:
         break
     except:
         print ("Invalid input, value must be an integer.")        
-        
-        
-init_energy = lattice_energy(lattice,boundaries,J,h)
+
 ```
 
 
