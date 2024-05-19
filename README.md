@@ -55,7 +55,7 @@ Provided all the prior inputs are valid, the program will produce a plot for the
 
 As the algorithm works based on selecting a random spin and then summing over the spin values of its nearest neighbours, the user must select a boundary condition for when a spin at the edge of the lattice is selected. The program offers the user 3 options:
 
- 1. Periodic - the lattice wraps back around to the opposite side, as if it repeats itself along said dimension.
+ 1. Periodic - the lattice wraps back around to the opposite side, as if it repeats itself along this dimension.
  2. Reflective - the edge of the lattice is reflected, so the nearest neighbour effectively becomes the selected spin itself.
  3. Open - the lattice is assumed to be surrounded by no interacting spins, so the nearest neighbour contribution at the boundary is taken to be zero.
 
@@ -78,13 +78,36 @@ while True:
         print("Invalid boundary conditions. Please choose again.")
 ```
 
+Finally, the user will be prompted to initialise the lattice's environment and apply the algorithm. A good example temperature to start with would be 1000K, while the value of the external magnetic field contribution (h) will depend on the specific environment being simulated. However, 0 is an acceptable value for testing the simulation in the absence of an external field. For the number of iterations of the algorithm, a good minimum for 1D lattices would be 10,000, multiplying by a factor of 10 with each added dimension.
 
+```python
+while True:
+    T = input("Enter the desired temperature (K) for the lattice's environment:")
+    try: 
+        T = int(T)
+        break
+    except:
+        print ("Invalid input, value must be an integer.")
 
-
-
-
-
-
+while True:
+    iterations = input("Enter the desired number of iterations of the Metropolis algorithm:")
+    try: 
+        iterations = int(iterations)
+        break
+    except:
+        print ("Invalid input, value must be an integer.")
+        
+while True:
+    h = input("Enter the desired external magnetic field value, h:")
+    try: 
+        h = int(h)
+        break
+    except:
+        print ("Invalid input, value must be an integer.")        
+        
+        
+init_energy = lattice_energy(lattice,boundaries,J,h)
+```
 
 
 
