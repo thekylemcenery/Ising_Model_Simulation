@@ -78,7 +78,7 @@ while True:
         print("Invalid boundary conditions. Please choose again.")
 ```
 
-The user will then be prompted to initialise the lattice's environment and apply the algorithm once for testing purposes. A good example temperature to start with would be 1000K, while the value of the external magnetic field contribution (h) will depend on the specific environment being simulated. However, 0 is an acceptable value for testing the simulation in the absence of an external field. For the number of iterations of the algorithm, a good minimum for 1D lattices would be 10,000, multiplying by a factor of 10 with each added dimension. Note that all inputs must be in integer form.
+The user will then be prompted to initialise the lattice's environment and apply the algorithm once for testing purposes. A good example temperature to start with would be 1000K, while the value of the external magnetic field contribution (h) will depend on the specific environment being simulated. However, 0 is an acceptable value for testing the simulation in the absence of an external field. For the number of iterations of the algorithm, a good minimum for 1D lattices would be 10,000, multiplying by a factor of 10 with each added dimension. The program will then produce two plots showing the evolution of the lattice's net spin and net energy over the specified number of iterations. Note that all inputs must be in integer form.
 
 ```python
 while True:
@@ -382,7 +382,7 @@ def metropolis_3D_periodic(spin_array,boundaries, times, T, J,h):
     return net_spins, net_energy, spin_array
 ```  
 
-The final type of function applies the Metropolis algorithm function for each temperature in a range specified by the user, generating 4 distinct 1D NumPy arrays containing thermodynamic data. By plotting this data, the temperature at which the lattice undergoes ferromagnetic phase transition can be idenitified. The process necessitates a version of this function for each possible dimensionality of the lattice> For example, in the case of a 3D lattice,the function takes the form: 
+The final type of function applies the Metropolis algorithm function for each temperature in a range specified by the user, generating 4 distinct 1D NumPy arrays containing thermodynamic data. By plotting this data, the temperature at which the lattice undergoes ferromagnetic phase transition can be idenitified. The process necessitates a version of this function for each possible dimensionality of the lattice. For example, in the case of a 3D lattice,the function takes the form: 
 
 ```python
 def thermo_calc_3D(min_temp, max_temp, system, boundaries, times, J, h):
