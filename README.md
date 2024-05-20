@@ -173,7 +173,7 @@ def generate_lattice(dimensionality):
     return lattice
 ```
 
-The second type of function is simply used to visualise the NumPy array using Matplotlib. There are 3 variations of this function, each corresponding to the dimensionality of the input array. For example, the function used to visualise a 2D lattice array: 
+The second type of function is simply used to visualise the NumPy array using Matplotlib. There are 3 variations of this function, each corresponding to the dimensionality of the input array, for example, the function used to visualise a 2D lattice array: 
 
 ```python
 def visualize_2d_lattice(lattice):
@@ -200,6 +200,68 @@ def visualize_2d_lattice(lattice):
 
     plt.show()
 ```
+
+The next type of function calculates the energy of of the lattice array based on the configuration of its spins. The nearest neighbour summation of the Ising model is replicated by convolving the lattice array with a boolean array to represent the neighbouring spin contributions. This caclulation is integral to the Metropolis-Hastings algorithm, but for reasons that will become clear, it is preferable to have a separate function for this calculation: 
+
+```python
+def lattice_energy(system, boundaries, J, h):
+    ''' 
+    Sums over nearest neighbours of every spin in a lattice to find the energy of the lattice.
+
+    Arguments:
+        system: Array of spins with border of objects representing boundary condition.
+        boundaries: Boundary conditions of the lattice
+        J: Exchange interaction.
+        h: External magnetic field value.
+
+    Returns:
+        total_energy: Total energy of the lattice divided by J.
+    '''
+    dim = system.ndim
+    
+    if dim == 1:
+        # For 1D lattice, nearest neighbors are simply the adjacent spins
+        kernel = np.array([1, 1])
+        if boundaries == 'wrap':
+            bounds = 'same'
+            energies = -system * np.convolve(system, kernel, mode=bounds)
+        elif boundaries == "reflect":
+            n = len(system)
+            energies = np.zeros_like(system)
+            for i in range(n):
+                if i == 0:
+                    energies[i] = -system[i] * system[i + 1]
+                elif i == n - 1:
+                    energies[i] = -system[i] * system[i - 1]
+                else:
+                    energies[i] = -system[i] * (system[i - 1] + system[i + 1])
+        else:
+            n = len(system)
+            energies = np.zeros_like(system)
+            for i in range(n):
+                if i == 0:
+                    energies[i] = -system[i] * system[i + 1]
+                elif i == n - 1:
+                    energies[i] = -system[i] * system[i - 1]
+                else:
+                    energies[i] = -system[i] * (system[i - 1] + system[i + 1])
+    elif dim == 2:
+        # For 2D lattice, use a 3x3 kernel to sum over nearest neighbors
+        kernel = generate_binary_structure(2, 1)
+        kernel[1, 1] = False
+        energies = -system * convolve(system, kernel, mode=boundaries, cval=0)
+    elif dim == 3:
+        # For 3D lattice, use a 3x3x3 kernel to sum over nearest neighbors
+        kernel = generate_binary_structure(3, 1)
+        kernel[1, 1, 1] = False
+        energies = -system * convolve(system, kernel, mode=boundaries, cval=0)
+    else:
+        raise ValueError("Unsupported array dimensions: Only 1D, 2D, or 3D arrays are supported.")
+    
+    total_energy = J * energies.sum() - h * system.sum()
+    return total_energy
+```    
+
 
 
 ## Examples
