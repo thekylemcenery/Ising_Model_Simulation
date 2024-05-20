@@ -201,7 +201,7 @@ def visualize_2d_lattice(lattice):
     plt.show()
 ```
 
-The next type of function calculates the energy of of the lattice array based on the configuration of its spins. The nearest neighbour summation of the Ising model is replicated by convolving the lattice array with a boolean array to represent the neighbouring spin contributions. This caclulation is integral to the Metropolis-Hastings algorithm, but for reasons that will become clear, it is preferable to have a separate function for this calculation: 
+The third type of function calculates the energy of of the lattice array based on the configuration of its spins. The nearest neighbour summation of the Ising model is replicated by convolving the lattice array with a boolean array to represent the neighbouring spin contributions. This caclulation is integral to the Metropolis-Hastings algorithm, but for reasons that will become clear, it is preferable to have a separate function for this calculation: 
 
 ```python
 def lattice_energy(system, boundaries, J, h):
@@ -261,6 +261,105 @@ def lattice_energy(system, boundaries, J, h):
     total_energy = J * energies.sum() - h * system.sum()
     return total_energy
 ```    
+
+The next type of function makes up the majority of the code, as it requires a unique variation for each combination of lattice dimensionality and boundary conditions. These are the Metropolis-Hastings algorithm functions, all of which calculates the energy of each lattice configuration for the number of iterations specified by the user. For example, we have the Metropolis function for a 3D lattice subjected to periodic boundary conditions: 
+
+```python
+def metropolis_3D_periodic(spin_array,boundaries, times, T, J,h):
+    '''Function which takes in a 3D array of spins subjected to periodic boundary conditions, times =  number of iterations, temperature and an exchange energy J 
+    and performs said iterations of the Metropolis Monte Carlo Algorithm to produce an array of net spins and energies,
+    based on the Ising Model.
+    Arguments:
+        spin_array = 3D array representing lattice of spins
+        boundaries = boundary conditions of lattice
+        times = desired iterations of algorithm
+        T = temperature (K)
+        J = exchange interaction
+        h = external magnetic field value
+    Returns:
+       net spins = 1D array of net spin of the latticefor each iteration
+       net_energies = 1D array of net energies of the lattice for each iteration
+       spin_ array = final lattice after all spin flips 
+    '''
+    energy = lattice_energy(spin_array,boundaries,J,h)
+    k = sc.Boltzmann
+    B = 1/(k*T) # Calculate beta value for specified temperature
+    spin_array = spin_array.copy()
+    net_spins = np.zeros(times-1)
+    net_energy = np.zeros(times-1)
+    for t in range(0,times-1):
+        # 2. pick random point on array and flip spin
+        n_x ,n_y, n_z = spin_array.shape
+        x = np.random.randint(0,n_x)
+        y = np.random.randint(0,n_y)
+        z = np.random.randint(0,n_z)
+        spin_i = spin_array[x,y,z] #initial spin
+        spin_f = spin_i*-1 #proposed spin flip
+        
+        # compute change in energy applying periodic boundary conditions
+        E_i = 0
+        E_f = 0
+        # Left element
+        if x==0:
+            E_i += -spin_i*spin_array[n_x-1,y,z]
+            E_f += -spin_f*spin_array[n_x-1,y,z]
+        if x>0:
+            E_i += -spin_i*spin_array[x-1,y,z]
+            E_f += -spin_f*spin_array[x-1,y,z]
+        # Right Element
+        if x<n_x-1:
+            E_i += -spin_i*spin_array[x+1,y,z]
+            E_f += -spin_f*spin_array[x+1,y,z]
+        if x == n_x-1:
+            E_i += -spin_i*spin_array[0,y,z]
+            E_f += -spin_f*spin_array[0,y,z]
+        # Below element
+        if y==0:
+            E_i += -spin_i*spin_array[x,n_y-1,z]
+            E_f += -spin_f*spin_array[x,n_y-1,z]
+        if y>0:
+            E_i += -spin_i*spin_array[x,y-1,z]
+            E_f += -spin_f*spin_array[x,y-1,z]
+        # Above element
+        if y<n_y-1:
+            E_i += -spin_i*spin_array[x,y+1,z]
+            E_f += -spin_f*spin_array[x,y+1,z]
+        if y==n_y-1:
+            E_i += -spin_i*spin_array[x,0,z]
+            E_f += -spin_f*spin_array[x,0,z]
+        # front neighbour
+        if z==0:
+            E_i += -spin_i*spin_array[x,y,n_z-1]
+            E_f += -spin_f*spin_array[x,y,n_z-1]
+        if z>0:
+            E_i += -spin_i*spin_array[x,y,z-1]
+            E_f += -spin_f*spin_array[x,y,z-1] 
+        # behind neighbour
+        if z<n_z-1:
+            E_i += -spin_i*spin_array[x,y,z+1]
+            E_f += -spin_f*spin_array[x,y,z+1]
+        if z==n_z-1:
+            E_i += -spin_i*spin_array[x,y,0]
+            E_f += -spin_f*spin_array[x,y,0] 
+        
+        # 3 / 4. change state with designated probabilities
+        E_i = J*E_i
+        E_f = J*E_f
+        
+        dE = E_f-E_i
+        P = np.random.random(1)[0] # Generate random number on interval [0,1)
+        if (dE>0)*(P < np.exp(-B*dE)):
+            spin_array[x,y,z]=spin_f
+            energy += dE
+        elif dE<=0:
+            spin_array[x,y,z]=spin_f
+            energy += dE
+            
+        net_spins[t] = spin_array.sum()
+        net_energy[t] = energy
+            
+    return net_spins, net_energy, spin_array
+```  
 
 
 
