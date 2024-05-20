@@ -78,7 +78,7 @@ while True:
         print("Invalid boundary conditions. Please choose again.")
 ```
 
-Finally, the user will be prompted to initialise the lattice's environment and apply the algorithm once for testing purposes. A good example temperature to start with would be 1000K, while the value of the external magnetic field contribution (h) will depend on the specific environment being simulated. However, 0 is an acceptable value for testing the simulation in the absence of an external field. For the number of iterations of the algorithm, a good minimum for 1D lattices would be 10,000, multiplying by a factor of 10 with each added dimension.
+The user will then be prompted to initialise the lattice's environment and apply the algorithm once for testing purposes. A good example temperature to start with would be 1000K, while the value of the external magnetic field contribution (h) will depend on the specific environment being simulated. However, 0 is an acceptable value for testing the simulation in the absence of an external field. For the number of iterations of the algorithm, a good minimum for 1D lattices would be 10,000, multiplying by a factor of 10 with each added dimension. Note that all inputs must be in integer form.
 
 ```python
 while True:
@@ -105,6 +105,27 @@ while True:
     except:
         print ("Invalid input, value must be an integer.")        
 
+```
+The final user prompt requests a minimum and maximum temperature, the algorithm will then be applied over this temperature range to produce thermodynamic data, such as the lattice's net energy, magnetisation (net spins), specfic heat capacity and magnetic susceptibility. Again, all inputs must be in integer form.
+
+```python
+print('The algorithm must be applied across a range of temperatures to calculate thermodynmic variables.')
+while True:
+    T_min = input("Enter the desired minimum temperature (K):")
+    try: 
+        T_min = int(T_min)
+        break
+    except:
+        print ("Invalid input, value must be an integer.")
+while True:
+    T_max = input("Enter the desired maximum temperature (K):")
+    try: 
+        T_max = int(T_max)
+        break
+    except:
+        print ("Invalid input, value must be an integer.")
+        
+temp_range = np.arange(T_min,T_max,5)
 ```
 
 ## Functions
