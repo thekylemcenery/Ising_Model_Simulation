@@ -109,7 +109,7 @@ while True:
 
 ## Functions
 
-There are 5 main types of function the program utilises. The first type is the generate_lattice() function, which takes in an integer for the dimensionaity and  produces a NumPy array to simulate the lattice of spins described by the Ising model:
+There are 5 primary types of function the program utilises. The first of which is the generate_lattice() function, which takes in an integer for the dimensionaity and  produces a NumPy array to simulate the lattice of spins described by the Ising model:
 
 
 ```python
@@ -173,7 +173,33 @@ def generate_lattice(dimensionality):
     return lattice
 ```
 
+The second type of function is simply used to visualise the NumPy array using Matplotlib. There are 3 variations of this function, each corresponding to the dimensionality of the input array. For example, the function used to visualise a 2D lattice array: 
 
+```python
+def visualize_2d_lattice(lattice):
+    """
+    Visualize a 2D lattice.
+
+    Parameters:
+        lattice (numpy.ndarray): The 2D lattice to visualize.
+
+    Returns:
+        None
+    """
+    plt.imshow(lattice, cmap='coolwarm', interpolation='nearest')
+    plt.title("2D Lattice Visualization")
+    plt.xlabel("X")
+    plt.ylabel("Y")
+    plt.colorbar(label="Spin Value")
+
+    # Set ticks based on lattice size
+    x_ticks = np.arange(lattice.shape[1])
+    y_ticks = np.arange(lattice.shape[0])
+    plt.xticks(x_ticks, labels=x_ticks)
+    plt.yticks(y_ticks, labels=y_ticks)
+
+    plt.show()
+```
 
 
 ## Examples
