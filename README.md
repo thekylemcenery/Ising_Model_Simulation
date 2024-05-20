@@ -109,11 +109,69 @@ while True:
 
 ## Functions
 
+There are 5 main types of function the program utilises. The first type is the generate_lattice() function, which takes in an integer for the dimensionaity and  produces a NumPy array to simulate the lattice of spins described by the Ising model:
 
 
+```python
+def generate_lattice(dimensionality):
+    """
+    Takes a real number on the interval [1,3] and generates a lattice of randomised spins with dimensions equal to the real number. 
+    Where 75% of the spins are +1 and 25% are -1.
 
-
-
+    Parameters:
+        dimensionality: number of dimensions of desired lattice, 1D,2D or 3D.
+        
+    Returns:
+        Lattice: array of spins randomised as -1 or +1.
+       
+    """
+    lattice = None
+    if dimensionality == 1:
+        size = None
+        while True:
+            try:
+                size = int(input("Enter the number of spins along the 1D lattice: "))
+                break  # Exit the loop if input is successfully converted to an integer
+            except ValueError:
+                print("Invalid input. Please enter an integer.")
+        init_random = np.random.random(size) # Generate 2D array of random values between 0 and 1
+        lattice = np.zeros(size)  # Lattice of spins
+        lattice[init_random>=0.25] = 1  # 75% of spins in lattice will be positive, but ordered randomly 
+        lattice[init_random<0.25] = -1       
+    elif dimensionality == 2:
+        size_x = None
+        size_y = None
+        while True:
+            try:
+                size_x = int(input("Enter the number of spins along the X dimension: "))
+                size_y = int(input("Enter the number of spins along the Y dimension: "))
+                break  # Exit the loop if inputs are successfully converted to integers
+            except ValueError:
+                print("Invalid input. Please enter integers.")
+        init_random = np.random.random((size_x,size_y)) # Generate 2D array of random values between 0 and 1
+        lattice = np.zeros((size_x,size_y))  # Lattice of spins
+        lattice[init_random>=0.25] = 1  # 75% of spins in lattice will be positive, but ordered randomly 
+        lattice[init_random<0.25] = -1
+    elif dimensionality == 3:
+        size_x = None
+        size_y = None
+        size_z = None
+        while True:
+            try:
+                size_x = int(input("Enter the number of spins along the X dimension: "))
+                size_y = int(input("Enter the number of spins along the Y dimension: "))
+                size_z = int(input("Enter the number of spins along the Z dimension: "))
+                break  # Exit the loop if inputs are successfully converted to integers
+            except ValueError:
+                print("Invalid input. Please enter integers.")
+        init_random = np.random.random((size_x,size_y,size_z)) # Generate 2D array of random values between 0 and 1
+        lattice = np.zeros((size_x,size_y,size_z))  # Lattice of spins
+        lattice[init_random>=0.25] = 1  # 75% of spins in lattice will be positive, but ordered randomly 
+        lattice[init_random<0.25] = -1
+    else:
+        print("Unsupported dimensionality.")
+    return lattice
+```
 
 
 
