@@ -441,13 +441,13 @@ def thermo_calc_3D(min_temp, max_temp, system, boundaries, times, J, h):
 
 The following example shows the ouputs produced by the program for a 3D, 15x15x15 lattice subject to periodic boundary conditions. First we have the Matplotlib visualisation of the lattice:
 
-![Figure 2024-05-22 155142](https://github.com/thekylemcenery/Ising-Model-Python-/assets/165184522/5a99b7a8-8930-4011-b437-03ac05b88264)
+![Figure 2024-05-22 155818](https://github.com/thekylemcenery/Ising-Model-Python-/assets/165184522/be8cd6dc-98c0-4709-ad4f-757ecf9a8bdf)
 
 
+Setting an initial temperature of 1000K and performing 50,000 iterations of the algorithm (with h=0), the program produces plots for the evolution of the lattice's average spin and total energy. Note that the respective variables change rapidly for the first 10,000 iterations, before approaching a certain value (with some fluctuation). This signifies the point at which the lattice reaches equilibrium, with approximately equal numbers of -1 and +1 spins, indicating the algorithm is working as intended:     
 
 
-
-
+![Figure 2024-05-22 155830](https://github.com/thekylemcenery/Ising-Model-Python-/assets/165184522/bb1254a2-a2ee-4092-bd75-bfaacb9daed6)
 
 
 
