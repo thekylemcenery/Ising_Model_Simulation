@@ -464,10 +464,10 @@ Note the spike in magnetic susceptibility at T = 400K, while the magnetisation a
 
 ## Contributing
 
-This project serves as a fairly simple approach to simulating the Ising Model, specifically in regards to the limited number of Python libraries used, which makes it a good example for undergraduate students. There are however, a number of ways the project could be improved, and any contributions are welcome. 
+This project serves as a fairly simple approach to simulating the Ising Model, specifically in regards to the limited number of Python libraries used, which makes it a good example for undergraduate students. There are however, a few ways the project could be improved, with any proposed contributions welcome. 
 
 Firstly, there is the issue of the code's efficiency, especially when running the computations for larger lattices (such as those with dimensions >50). As the number of dimensions increases, so does the required number of iterations of the Metropolis-Hasting's algorithm to data with less fluctuation. Consequently, the volume of calculations done by the program becomes substantial, drastically increasing the time taken to produce the thermodyamic data plots. One way this could be solved is by rewriting the algorithm functions using a library such as Pandas, where the large amounts of data can be processed more efficiently. 
 
-Secondly, the program could benefit from expanding the number of available user input, specifically the addition of new functions which allow for more options for the lattice's boundary conditions or new algorithms to apply to the Ising model, such as the Wolff and Swendsen-Wang algorithms respectively.
+Furthermore, the program could benefit from expanding the number of available user inputs, specifically the addition of new functions which allow for more boundary condition options or alternative algorithms to apply to the Ising model, such as the Wolff and Swendsen-Wang algorithms respectively.
 
 
