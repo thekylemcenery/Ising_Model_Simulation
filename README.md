@@ -462,7 +462,9 @@ Then we have plots for the magnetisation and magnetic susceptibility:
 Note the spike in magnetic susceptibility at T = 400K, while the magnetisation also begins to level off at T = 400K after an initial rapid decline towards 0. This point corresponds to the point at which the lattice transitions from a state of ferromagnetism to a state of paramagnetism, associated temperature of which is usually reffered to as the Curie Temperature. The scientific background needed to interpret these plots in more detail is outlined in a brief report included in files of this project, which also explores the singificance of the total energy and specific heat capacities in the phase transition (see T2IM-2.pdf).
 
 
+## Contributing
 
+This project serves as a fairly simple approach to simulating the Ising Model, specifically in regards to the limited number of Python libraries used, which makes it a good example for undergraduate students. There are however, a number of ways the project could be improved, and any contributions are welcome. Firstly, there is the issue of the code's efficiency, especially when running the computations for larger lattices (such as those with dimensions >50). As higher numbers of dimensions require more iterations of the Metropolis-Hasting's algorithm, the volume of calculations done by the program becomes substantial, drastically increasing the time taken for the program to produce the thermodyamic data plots. 
 
 
 
