@@ -443,11 +443,15 @@ The following example shows the ouputs produced by the program for a 3D, 15x15x1
 
 ![Figure 2024-05-22 155818](https://github.com/thekylemcenery/Ising-Model-Python-/assets/165184522/be8cd6dc-98c0-4709-ad4f-757ecf9a8bdf)
 
-
 Setting an initial temperature of 1000K and performing 50,000 iterations of the algorithm (with h=0), the program produces plots for the evolution of the lattice's average spin and total energy. Note that the respective variables change rapidly for the first 10,000 iterations, before approaching a certain value (with some fluctuation). This signifies the point at which the lattice reaches equilibrium, with approximately equal numbers of -1 and +1 spins, indicating the algorithm is working as intended:     
 
+![Figure 2024-05-22 160757](https://github.com/thekylemcenery/Ising-Model-Python-/assets/165184522/f830bb7c-d525-4e7d-b452-b6bc807c99dc)
 
-![Figure 2024-05-22 155830](https://github.com/thekylemcenery/Ising-Model-Python-/assets/165184522/bb1254a2-a2ee-4092-bd75-bfaacb9daed6)
+Using a temperature range of 0-500K, the program then produces 4 distinct plots for identifying the point of ferromagnetic phase transition. Firstly we have the total energy and specific heat capcity:
+
+![Figure 2024-05-22 155834](https://github.com/thekylemcenery/Ising-Model-Python-/assets/165184522/cbd879bd-33fe-4efa-b2c6-6cb403f229f5)
+![Figure 2024-05-22 155840](https://github.com/thekylemcenery/Ising-Model-Python-/assets/165184522/ed266b37-1e78-460c-922b-69a4e9d516db)
+
 
 
 
