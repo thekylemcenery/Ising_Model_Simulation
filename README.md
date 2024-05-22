@@ -447,11 +447,16 @@ Setting an initial temperature of 1000K and performing 50,000 iterations of the 
 
 ![Figure 2024-05-22 162113](https://github.com/thekylemcenery/Ising-Model-Python-/assets/165184522/5f79cd7a-306b-4525-928d-05c69e459063)
 
-Using a temperature range of 0-100K, the program then produces 4 distinct plots for identifying the point of ferromagnetic phase transition. Firstly we have the total energy and specific heat capacity (note the spike in the latter plot):
+Using a temperature range of 0-100K, the program then produces 4 distinct plots for identifying the point of ferromagnetic phase transition. Firstly we have the total energy and specific heat capacity:
+![Figure 2024-05-22 162638](https://github.com/thekylemcenery/Ising-Model-Python-/assets/165184522/a3230a81-db30-4e6e-a142-6b3911b53be9)
 
+![Figure 2024-05-22 162646](https://github.com/thekylemcenery/Ising-Model-Python-/assets/165184522/8f59d195-a9a8-4128-a12e-692d5e71068a)
 
+Then we have plots for the magnetisation and magnetic susceptibility:
 
-Then we have plots for the magnetisation and magnetic susceptibility.
+![Figure 2024-05-22 162708](https://github.com/thekylemcenery/Ising-Model-Python-/assets/165184522/8b50c8aa-8467-4167-8737-3e098a6be36f)
+
+![Figure 2024-05-22 162716](https://github.com/thekylemcenery/Ising-Model-Python-/assets/165184522/8c3d86ea-f787-443a-9a16-afda4dfb6847)
 
 
 
