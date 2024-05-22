@@ -441,22 +441,17 @@ def thermo_calc_3D(min_temp, max_temp, system, boundaries, times, J, h):
 
 The following example shows the ouputs produced by the program for a 3D, 15x15x15 lattice subject to periodic boundary conditions. First we have the Matplotlib visualisation of the lattice:
 
-![Figure 2024-05-22 155818](https://github.com/thekylemcenery/Ising-Model-Python-/assets/165184522/be8cd6dc-98c0-4709-ad4f-757ecf9a8bdf)
+![Figure 2024-05-22 162106](https://github.com/thekylemcenery/Ising-Model-Python-/assets/165184522/b321ba91-f7cc-48cf-a335-f5d94eae892c)
 
 Setting an initial temperature of 1000K and performing 50,000 iterations of the algorithm (with h=0), the program produces plots for the evolution of the lattice's average spin and total energy. Note that the respective variables change rapidly for the first 10,000 iterations, before approaching a certain value (with some fluctuation). This signifies the point at which the lattice reaches equilibrium, with approximately equal numbers of -1 and +1 spins, indicating the algorithm is working as intended:     
 
-![Figure 2024-05-22 160757](https://github.com/thekylemcenery/Ising-Model-Python-/assets/165184522/f830bb7c-d525-4e7d-b452-b6bc807c99dc)
+![Figure 2024-05-22 162113](https://github.com/thekylemcenery/Ising-Model-Python-/assets/165184522/5f79cd7a-306b-4525-928d-05c69e459063)
 
-Using a temperature range of 0-500K, the program then produces 4 distinct plots for identifying the point of ferromagnetic phase transition. Firstly we have the total energy and specific heat capacity (note the spike in the latter plot):
+Using a temperature range of 0-100K, the program then produces 4 distinct plots for identifying the point of ferromagnetic phase transition. Firstly we have the total energy and specific heat capacity (note the spike in the latter plot):
 
-![Figure 2024-05-22 155834](https://github.com/thekylemcenery/Ising-Model-Python-/assets/165184522/cbd879bd-33fe-4efa-b2c6-6cb403f229f5)
-![Figure 2024-05-22 155840](https://github.com/thekylemcenery/Ising-Model-Python-/assets/165184522/ed266b37-1e78-460c-922b-69a4e9d516db)
+
 
 Then we have plots for the magnetisation and magnetic susceptibility.
-
-![Figure 2024-05-22 155845](https://github.com/thekylemcenery/Ising-Model-Python-/assets/165184522/15a5558e-28dc-456b-919c-718c252a5e08)
-
-![Figure 2024-05-22 155901](https://github.com/thekylemcenery/Ising-Model-Python-/assets/165184522/843b22c4-61d0-4f96-bafb-00ca874b85e5)
 
 
 
