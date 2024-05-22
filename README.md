@@ -471,3 +471,4 @@ Firstly, there is the issue of the code's efficiency, especially when running th
 Furthermore, the program could benefit from expanding the number of available user inputs, specifically the addition of new functions which allow for more boundary condition options or alternative algorithms to apply to the Ising model, such as the Wolff and Swendsen-Wang algorithms respectively.
 
 
+## License
