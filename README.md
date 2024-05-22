@@ -439,8 +439,9 @@ def thermo_calc_3D(min_temp, max_temp, system, boundaries, times, J, h):
 
 ## Examples
 
+The following example shows the ouputs produced by the program for a 3D, 15x15x15 lattice subject to periodic boundary conditions. First we have the Matplotlib visualisation of the lattice:
 
-
+![Figure 2024-05-22 155142](https://github.com/thekylemcenery/Ising-Model-Python-/assets/165184522/5a99b7a8-8930-4011-b437-03ac05b88264)
 
 
 
