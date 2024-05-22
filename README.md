@@ -459,7 +459,7 @@ Then we have plots for the magnetisation and magnetic susceptibility:
 
 ![Figure 2024-05-22 162716](https://github.com/thekylemcenery/Ising-Model-Python-/assets/165184522/8c3d86ea-f787-443a-9a16-afda4dfb6847)
 
-
+Note the spike in magnetic susceptibility at T = 400K, while the magnetisation also begins to level off at T = 400K after an initial rapid decline towards 0. This point corresponds to the point at which the lattice transitions from a state of ferromagnetism to a state of paramagnetism, associated temperature of which is usually reffered to as the Curie Temperature. The scientific background needed to interpret these plots in more detail is outlined in a brief report included in files of this project, which also explores the singificance of the total energy and specific heat capacities in the phase transition.
 
 
 
